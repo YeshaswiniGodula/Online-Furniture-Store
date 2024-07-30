@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Furniture Shop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #87CEEB; /* Sky blue background */
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #444;
+            background-color: #FFE4B8;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .button-container button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .button-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .items-section {
+            background-color: #FFDAB9;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .item {
+            background-color: #FFDAB9; /* Peach color */
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .item img {
+            width: 200px;
+            height: auto;
+            border-radius: 5px;
+            margin-right: 20px;
+        }
+
+        .item span {
+            flex-grow: 1;
+        }
+
+        .item button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 20px;
+        }
+
+        .item button:hover {
+            background-color: #218838;
+        }
+
+        #cartItems {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #cartItems li {
+            background-color: #ffffff;
+            border-radius: 5px;
+            margin: 5px 0;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #totalPrice {
+            font-size: 50px;
+            font-weight: bold;
+            text-align: right;
+        }
+
+        #viewCartButton {
+            background-color: #0000ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #viewCartButton:hover {
+            background-color: #e0a800;
+        }
+    </style>
+    <script>
+        let cart = [];
+
+        function showItems(category) {
+            const categories = ["mattresses", "sofas", "wardrobes", "hammockswings"];
+            categories.forEach(cat => {
+                document.getElementById(cat).classList.add("hidden");
+            });
+            document.getElementById(category).classList.remove("hidden");
+        }
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            alert(`${name} has been added to the cart.`);
+        }
+
+        function viewCart() {
+            let total = 0;
+            let cartItems = '';
+            cart.forEach(item => {
+                total += item.price;
+                cartItems += `<li>${item.name} - $${item.price}</li>`;
+            });
+            document.getElementById("cartItems").innerHTML = cartItems;
+            document.getElementById("totalPrice").innerText = `Total: $${total}`;
+        }
+    </script>
+</head>
+<body>
+
+<h1>Welcome to Our Online Furniture Shop</h1>
+<div class="button-container">
+    <button onclick="showItems('mattresses')">Mattresses</button>
+    <button onclick="showItems('sofas')">Sofas</button>
+    <button onclick="showItems('wardrobes')">Wardrobes</button>
+    <button onclick="showItems('hammockswings')">Hammock Swings</button>
+</div>
+
+<div id="mattresses" class="hidden items-section">
+    <h2>Mattresses</h2>
+    <div class="item">
+        <img src="https://i5.walmartimages.com/asr/411a7c64-bac8-4d84-91fd-637f651ef217_4.16ef6058cee9cbd0b7761b57eb10387c.jpeg" alt="Comfort Mattress">
+        <span>Comfort Mattress - $200</span>
+        <button onclick="addToCart('Comfort Mattress', 200)">Add to Cart</button>
+    </div>
+    <div class="item">
+        <img src="https://cdn.luxe.digital/media/2021/04/12140639/best-luxury-mattress-brands-saatva-review-luxe-digital%402x.jpg" alt="Luxury Mattress">
+        <span>Luxury Mattress - $350</span>
+        <button onclick="addToCart('Luxury Mattress', 350)">Add to Cart</button>
+    </div>
+</div>
+
+<div id="sofas" class="hidden items-section">
+    <h2>Sofas</h2>
+    <div class="item">
+        <img src="https://i0.wp.com/pimphomee.com/wp-content/uploads/2020/02/Gorgeous-Modern-Sofa-Designs-That-You-Definitely-Like-04.jpg?ssl=1" alt="Modern Sofa">
+        <span>Modern Sofa - $450</span>
+        <button onclick="addToCart('Modern Sofa', 450)">Add to Cart</button>
+    </div>
+    <div class="item">
+        <img src="https://i.pinimg.com/originals/94/d6/85/94d6856d081bf870e28061cccf2a268c.jpg" alt="Classic Sofa">
+        <span>Classic Sofa - $400</span>
+        <button onclick="addToCart('Classic Sofa', 400)">Add to Cart</button>
+    </div>
+</div>
+
+<div id="wardrobes" class="hidden items-section">
+    <h2>Wardrobes</h2>
+    <div class="item">
+        <img src="https://menterarchitects.com/wp-content/uploads/2017/09/furniture-brown-polished-wooden-wardrobe-closet-with-black-frame-for-dark-wood-wardrobe-with-drawers.jpg" alt="Wooden Wardrobe">
+        <span>Wooden Wardrobe - $600</span>
+        <button onclick="addToCart('Wooden Wardrobe', 600)">Add to Cart</button>
+    </div>
+    <div class="item">
+        <img src="https://www.gogetyourself.com/wp-content/uploads/2021/05/Sliding-Wardrobes-for-Bedrooms-3-1536x800.jpg" alt="Sliding Door Wardrobe">
+        <span>Sliding Door Wardrobe - $750</span>
+        <button onclick="addToCart('Sliding Door Wardrobe', 750)">Add to Cart</button>
+    </div>
+</div>
+
+<div id="hammockswings" class="hidden items-section">
+    <h2>Hammock Swings</h2>
+    <div class="item">
+        <img src="https://i5.walmartimages.com/asr/128a93c3-7e40-4aec-8336-4eb42d50b456_1.0e453474dbcc454dd0f3252a3cda64ac.jpeg?odnWidth=1000&odnHeight=1000&odnBg=ffffff" alt="Outdoor Hammock Swing">
+        <span>Outdoor Hammock Swing - $120</span>
+        <button onclick="addToCart('Outdoor Hammock Swing', 120)">Add to Cart</button>
+    </div>
+    <div class="item">
+        <img src="https://i5.walmartimages.com/asr/ab365e89-71c3-445f-a532-ecf4b384794f.ce10f166d82f5cda38297a949506de29.jpeg" alt="Indoor Hammock Swing">
+        <span>Indoor Hammock Swing - $100</span>
+        <button onclick="addToCart('Indoor Hammock Swing', 100)">Add to Cart</button>
+    </div>
+</div>
+
+<h2>Cart</h2>
+<ul id="cartItems"></ul>
+<p id="totalPrice"></p>
+<button id="viewCartButton" onclick="viewCart()">View Cart</button>
+
+</body>
+</html>
