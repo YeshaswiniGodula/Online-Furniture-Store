@@ -2,11 +2,15 @@
 Interior-The Furniture Store is a simple e-commerce website designed to showcase and sell furniture. The webpage includes a login form, a product listing with pricing options, and a shopping cart feature.
 # Files
 furniture.html: The login page for the online furniture store.
+
 products.html: The main shopping page with product listings.
 # Features
 Login Form: Users can log in to explore the products.
+
 Product Listing: Displays various products with options to filter by price.
+
 Shopping Cart: Users can add products to the cart and view the total price.
+
 Responsive Design: The layout adjusts to different screen sizes for better user experience.
 # How to Use
 Open furniture.html in a web browser to view the .
